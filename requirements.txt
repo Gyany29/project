@@ -1,3 +1,4 @@
 tensorflow-cpu
 Werkzeug
 gunicorn
+Flask
