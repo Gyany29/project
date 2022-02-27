@@ -28,11 +28,6 @@
       }
       body {
         height: 200vh;
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.7),
-            rgba(22, 23, 27, 0.7)
-          ),
-          url("/static/back.jpg");
         background-position: center;
         background-size: cover;
       }
@@ -128,6 +123,11 @@
       .top {
         height: 50%;
         width: 100%;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(22, 23, 27, 0.7)
+          ),
+          url("/static/back.jpg");
         color: #fff;
         padding-top: 80px;
         display: flex;
@@ -136,7 +136,7 @@
         flex-direction: column;
       }
       .top h1 {
-        font-size: 80px;
+        font-size: 70px;
         font-weight: 400;
         word-spacing: 20px;
         padding-bottom: 50px;
@@ -145,7 +145,7 @@
         text-decoration: none;
         color: #fff;
         font-size: 20px;
-        padding: 25px;
+        padding: 20px;
         border: 3px solid #fff;
         border-radius: 20px;
         background: linear-gradient(red, orange, green);
@@ -158,18 +158,52 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding-top: 80px;
         color: #fff;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(22, 23, 27, 0.7)
+          ),
+          url("/static/back1.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      input[type="file"] {
+        padding: 80px 0px;
+        font-size: 18px;
+        word-spacing: 3px;
+      }
+      input[type="submit"] {
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #fff;
+        border: 3px solid #fff;
+        background: linear-gradient(
+          rgb(182, 101, 101),
+          rgb(119, 100, 66),
+          rgb(111, 168, 111)
+        );
       }
       h1 {
         font-weight: 900;
       }
+      .predict h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
       .top h2 {
-        padding: 50px 0px;
+        padding: 80px 0px;
+        font-weight: 500;
+        word-spacing: 10px;
       }
       @media screen and (max-width: 800px) {
         .topnav {
           height: 9%;
+        }
+        .top h1 {
+          font-size: 50px;
         }
         .topnav a {
           display: none;
@@ -186,7 +220,7 @@
   </head>
   <body>
     <div class="topnav" style="width: 100%">
-      <a href=""
+      <a href="#top"
         ><i class="fas fa-traffic-light"></i>Home
         <span class="tooltip">Home</span></a
       >
@@ -214,13 +248,13 @@
     <section class="top" id="top">
       <h1>Welcome To our Project</h1>
       <a href="#predict">Predict Your Sign</a>
-      <h2 style="color: blue">{{value_text}}</h2>
+      <h2>{{value_text}}</h2>
     </section>
     <section class="predict" id="predict">
       <h1>Find Your Sign Here</h1>
       <form method="POST" action="/uploader" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        <input type="submit" value="submit" />
+        <input type="file" name="file" /><br />
+        <input type="submit" value="Submit" />
       </form>
     </section>
     <script>
