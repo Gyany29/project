@@ -3,6 +3,3 @@ numpy
 tensorflow
 Werkzeug
 gunicorn
-itsdangerous
-Jinja2
-MarkupSafe
