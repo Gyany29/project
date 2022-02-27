@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        height: 200vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(22, 23, 27, 0.7)
+          ),
+          url("/static/back.jpg");
+        background-position: center;
+        background-size: cover;
+      }
+      .topnav {
+        position: fixed;
+        background: rgb(255, 255, 255);
+        padding: 6px 14px;
+        z-index: 99;
+        transition: all 0.5s ease;
+      }
+      .topnav i {
+        color: #000;
+        height: 50px;
+        min-width: 50px;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+        line-height: 50px;
+      }
+      .topnav a {
+        float: right;
+        display: flex;
+        border-radius: 10px;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.4s ease;
+        color: #000;
+        padding-right: 60px;
+      }
+      .topnav a:hover {
+        color: #fff;
+        background-color: #000;
+        transform: translateX(-10%);
+      }
+      .topnav a:hover i {
+        transition: all 0.5s ease;
+        color: #fff;
+      }
+      .topnav a:hover .tooltip {
+        opacity: 1;
+        pointer-events: all;
+        transition: all 0.4s ease;
+        top: 1%;
+        transform: translate(50%, 150%);
+      }
+      .tooltip {
+        position: absolute;
+        top: -20px;
+        color: #fff;
+        bottom: calc(100%+10px);
+        z-index: 3;
+        background: rgb(22, 21, 21);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: 400;
+        opacity: 0;
+        white-space: nowrap;
+        pointer-events: none;
+        transition: 0s;
+      }
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidenav a {
+        padding: 100px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: flex;
+        transition: 0.3s;
+      }
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      .top {
+        height: 50%;
+        width: 100%;
+        color: #fff;
+        padding-top: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .top h1 {
+        font-size: 80px;
+        font-weight: 400;
+        word-spacing: 20px;
+        padding-bottom: 50px;
+      }
+      .top a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 20px;
+        padding: 25px;
+        border: 3px solid #fff;
+        border-radius: 20px;
+        background: linear-gradient(red, orange, green);
+      }
+      .predict {
+        width: 100%;
+        height: 50%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 80px;
+        color: #fff;
+      }
+      h1 {
+        font-weight: 900;
+      }
+      .top h2 {
+        padding: 50px 0px;
+      }
+      @media screen and (max-width: 800px) {
+        .topnav {
+          height: 9%;
+        }
+        .topnav a {
+          display: none;
+        }
+        .topnav .logo,
+        .topnav .btn {
+          display: flex;
+        }
+        .sidenav a {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topnav" style="width: 100%">
+      <a href=""
+        ><i class="fas fa-traffic-light"></i>Home
+        <span class="tooltip">Home</span></a
+      >
+      <a href="#predict"
+        ><p><i class="fa fa-male"></i>Find Your Traffic Sign</p>
+        <span class="tooltip">Find Your Traffic Sign</span></a
+      >
+      <a style="float: left; padding-right: 0px" class="btn"
+        ><i class="fas fa-bars" id="btn" onclick="openNav()"></i>
+        <span class="tooltip">Menu</span></a
+      >
+      <a style="float: left; padding-right: 0px" class="logo" href="#top"
+        ><img
+          src="/static/traffic.jpg"
+          height="50px"
+          width="40px"
+          style="border-radius: 20px 7px"
+      /></a>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="#top">Home</a>
+      <a href="#predict">Find Your Traffic Sign</a>
+      <a href="javascript:void(0)" onclick="closeNav()">Close</a>
+    </div>
+    <section class="top" id="top">
+      <h1>Welcome To our Project</h1>
+      <a href="#predict">Predict Your Sign</a>
+      <h2 style="color: blue">{{value_text}}</h2>
+    </section>
+    <section class="predict" id="predict">
+      <h1>Find Your Sign Here</h1>
+      <form method="POST" action="/uploader" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" value="submit" />
+      </form>
+    </section>
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "50%";
+      }
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      btn.addEventListener("mouseenter", () => {
+        document.getElementById("mySidenav").style.width = "50%";
+      });
+      mySidenav.addEventListener("mouseleave", () => {
+        document.getElementById("mySidenav").style.width = "0%";
+      });
+    </script>
+  </body>
+</html>
