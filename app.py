@@ -66,7 +66,6 @@ def upload_file():
     uploaded_file = request.files['file']
     filename = secure_filename(uploaded_file.filename)
     if uploaded_file.filename != '':
-        uploaded_file.save(filename)
         filepath = os.path.realpath(filename)
 
         img = image.load_img(filepath, target_size=(32, 32))  # load the image
