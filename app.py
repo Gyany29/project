@@ -53,7 +53,7 @@ classes = {0: 'Speed limit (20km/h)',
            42: 'End no passing vehicle > 3.5 tons'}
 
 app = Flask(__name__)
-
+UPLOAD_FOLDER = "images/"
 
 @app.route('/')
 def index():
@@ -66,7 +66,8 @@ def upload_file():
     uploaded_file = request.files['file']
     filename = secure_filename(uploaded_file.filename)
     if uploaded_file.filename != '':
-        filepath = os.path.realpath(filename)
+        uploaded_file.save(UPLOAD_FOLDER + filename)
+        filepath = os.path.realpath(UPLOAD_FOLDER + filename)
 
         img = image.load_img(filepath, target_size=(32, 32))  # load the image
         x = image.img_to_array(img)
