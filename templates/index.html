@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MINI PROJECT-B4</title>
-    <link rel="icon" href="/static/logo.png"/>
+    <link rel="icon" href="/static/logo.png" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -200,7 +200,7 @@
         word-spacing: 10px;
       }
       .predict h1 {
-        padding-bottom: 50px;
+        padding-top: 50px;
       }
       .predict a {
         display: flex;
@@ -218,6 +218,21 @@
         );
         border: 3px solid #fff;
         border-radius: 30px;
+      }
+      button {
+        background: transparent;
+        border: none;
+        color: #fff;
+      }
+      #predict a {
+        padding: 10%;
+        cursor: pointer;
+      }
+      button {
+        cursor: pointer;
+      }
+      #predict h3 {
+        padding: 7% 45%;
       }
       @media screen and (max-width: 800px) {
         .topnav {
@@ -241,14 +256,10 @@
   </head>
   <body>
     <div class="topnav" style="width: 100%">
-      <a href="#top"
-        ><i class="fas fa-traffic-light"></i>Home
-        <span class="tooltip">Home</span></a
-      >
+      <a href="#top"><i class="fas fa-traffic-light"></i>Home </a>
       <a href="#predict"
         ><p><i class="fa fa-male"></i>Find Your Traffic Sign</p>
-        <span class="tooltip">Find Your Traffic Sign</span></a
-      >
+      </a>
       <a style="float: left; padding-right: 0px" class="btn"
         ><i class="fas fa-bars" id="btn" onclick="openNav()"></i>
         <span class="tooltip">Menu</span></a
@@ -272,15 +283,19 @@
       <a href="#predict">Predict Your Sign</a>
       <h2>{{value_text}}</h2>
     </section>
-     <section class="predict" id="download">
+    <section class="predict" id="download">
       <h1>Download Sample Test Case</h1>
-      <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCdBde-gPRzjH1sqSY64DKx7LwsnbtliH1g&usqp=CAU" download>Click To Download</a>
+      <a href="" download id="image"
+        ><button onclick="randImg()">Click To Download</button></a
+      >
     </section>
     <section class="predict" id="predict">
       <h1>Find Your Sign Here</h1>
       <form method="POST" action="/uploader" enctype="multipart/form-data">
         <input type="file" accept="image/*" name="file" /><br />
         <input type="submit" value="Submit" />
+        <h3>OR</h3>
+        <a href="#download">Try Downloading a Sample</a>
       </form>
     </section>
     <script>
@@ -296,6 +311,24 @@
       mySidenav.addEventListener("mouseleave", () => {
         document.getElementById("mySidenav").style.width = "0%";
       });
+      var images = [
+        "/images/00002.png",
+        "/images/00014.png",
+        "/images/00016.png",
+        "/images/00263.png",
+        "/images/00042.png",
+        "/images/00156.png",
+        "/images/00157.png",
+        "/images/00532.png",
+        "/images/00535.png",
+      ];
+
+      function randImg() {
+        var size = images.length;
+        var x = Math.floor(size * Math.random());
+        console.log(x);
+        document.getElementById("image").href = images[x];
+      }
     </script>
   </body>
 </html>
