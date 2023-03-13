@@ -1,7 +1,7 @@
 # Traffic Sign Recognition using CNN
 A flask web application to predict Traffic Sign by uploading a image.
 # What is convolutional neural network?
-A convolutional neural network (CNN or convnet) is a subset of machine learning. 
+A [Convolutional Neural Network] (https://en.wikipedia.org/wiki/Convolutional_neural_network) is a subset of machine learning. 
 It is one of the various types of artificial neural networks which are used for different applications and data types. 
 A CNN is a kind of network architecture for deep learning algorithms and is specifically used for image recognition and tasks that involve the processing of pixel data.
 
@@ -23,10 +23,10 @@ The FC layer is where image classification happens in the CNN based on the featu
 
 All the layers in the CNN are not fully connected because it would result in an unnecessarily dense network. It also would increase losses and affect the output quality, and it would be computationally expensive.
 
-# Tensorflow
+# [Tensorflow] (https://www.tensorflow.org/overview)
 TensorFlow is an end-to-end open source platform for machine learning. TensorFlow is a rich system for managing all aspects of a machine learning system; however, this class focuses on using a particular TensorFlow API to develop and train machine learning models.
 
-# Keras
+# [Keras] (https://keras.io/about/)
 Keras is a high-level, deep learning API developed by Google for implementing neural networks. It is written in Python and is used to make the implementation of neural networks easy. It also supports multiple backend neural network computation.  
 
 # Decription
